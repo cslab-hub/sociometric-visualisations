@@ -59,7 +59,7 @@ def dynamic_complexity(data, window_size, difference_threshold = 0, min_val=None
     ## Normalising term
     g = increment * repetitions * offset
     
-    ## Compute distribution D in a window. This can be hard to follow, but essentially the idea is to figure out how many
+    ## Compute distribution D in a window. This can be hard to follow, but essentially the idea is to use our knowledge of how many
     ## times the various pairs of positions are used (in the matrix called 'repetitions'), since this saves on computation
     def distribution_window(data):
         
@@ -70,7 +70,7 @@ def dynamic_complexity(data, window_size, difference_threshold = 0, min_val=None
         differences = np.zeros((len(data), len(data)))
 
         ## Find differences at different index locations
-        differences =  np.tril(data[:, np.newaxis] - data[np.newaxis, :])[1:,:-1].T ## select [1:,:-1] to move the unneeded zeros
+        differences =  np.tril(data[:, np.newaxis] - data[np.newaxis, :])[1:,:-1].T ## select [1:,:-1] to remove the unneeded zeros
 
         ## Residuals
         residuals = uniform_differences - differences
