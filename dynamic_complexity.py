@@ -65,10 +65,6 @@ def dynamic_complexity(data, window_size, difference_threshold = 0, min_val=None
         
         data = np.sort(data)
 
-        ## Get the differences between the values at different indices
-
-        differences = np.zeros((len(data), len(data)))
-
         ## Find differences at different index locations
         differences =  np.tril(data[:, np.newaxis] - data[np.newaxis, :])[1:,:-1].T ## select [1:,:-1] to remove the unneeded zeros
 
